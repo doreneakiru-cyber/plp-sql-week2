@@ -1,20 +1,24 @@
-CREATE DATABASE IF NOT EXISTS plp_assignment;
-USE plp_assignment;
+CREATE DATABASE IF NOT EXISTS salesdb;
+USE salesdb;
 
--- Question 1: Create the student table
-CREATE TABLE student (
-    id INT PRIMARY KEY,
-    fullName VARCHAR(100),
-    age INT
-);
+-- Question 1
+SELECT paymentDate, SUM(amount) AS totalAmount
+FROM payments
+GROUP BY paymentDate
+ORDER BY paymentDate DESC
+LIMIT 5;
 
--- Question 2: Insert 3 records
-INSERT INTO student (id, fullName, age) VALUES
-(1, 'John Doe', 20),
-(2, 'Jane Smith', 22),
-(3, 'Alice Johnson', 19);
+-- Question 2
+SELECT customerName, country, AVG(creditLimit) AS averageCreditLimit
+FROM customers
+GROUP BY customerName, country;
 
--- Question 3: Update age for student with ID 2 to 20
-UPDATE student
-SET age = 20
-WHERE id = 2;
+-- Question 3
+SELECT productCode, quantityOrdered, SUM(quantityOrdered * priceEach) AS totalPrice
+FROM orderdetails
+GROUP BY productCode, quantityOrdered;
+
+-- Question 4
+SELECT checkNumber, MAX(amount) AS highestAmount
+FROM payments
+GROUP BY checkNumber;
