@@ -1,25 +1,20 @@
--- Question 1: Retrieve Payment Information
-SELECT checkNumber, paymentDate, amount 
-FROM payments;
+CREATE DATABASE IF NOT EXISTS plp_assignment;
+USE plp_assignment;
 
--- Question 2: Find Orders in Process
-SELECT orderDate, requiredDate, status 
-FROM orders 
-WHERE status = 'In Process' 
-ORDER BY orderDate DESC;
+-- Question 1: Create the student table
+CREATE TABLE student (
+    id INT PRIMARY KEY,
+    fullName VARCHAR(100),
+    age INT
+);
 
--- Question 3: Find Sales Representatives
-SELECT firstName, lastName, email 
-FROM employees 
-WHERE jobTitle = 'Sales Rep' 
-ORDER BY employeeNumber DESC;
+-- Question 2: Insert 3 records
+INSERT INTO student (id, fullName, age) VALUES
+(1, 'John Doe', 20),
+(2, 'Jane Smith', 22),
+(3, 'Alice Johnson', 19);
 
--- Question 4: Retrieve Office Details
-SELECT * 
-FROM offices;
-
--- Question 5: Top 5 Stock Items by Buy Price
-SELECT productName, quantityInStock 
-FROM products 
-ORDER BY buyPrice ASC 
-LIMIT 5;
+-- Question 3: Update age for student with ID 2 to 20
+UPDATE student
+SET age = 20
+WHERE id = 2;
